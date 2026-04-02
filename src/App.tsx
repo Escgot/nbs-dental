@@ -139,6 +139,20 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
+  // Handle RTL and Title
+  useEffect(() => {
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = lang;
+    document.title = t.title;
+  }, [lang, t.title]);
+
+  const toggleLang = () => {
+    const langs: Language[] = ['fr', 'en', 'ar'];
+    const currentIndex = langs.indexOf(lang);
+    const nextIndex = (currentIndex + 1) % langs.length;
+    setLang(langs[nextIndex]);
+  };
+
   return (
     <>
       {/* Navigation */}
@@ -147,7 +161,7 @@ function App() {
           <div className="logo-wrapper">
             <img src="/images/my-logo.png" alt="Dr Nawres Logo" className="nav-logo-img" />
             <div className="logo-text">
-              <span className="doctor-name">Dr Nawres Ben Salah</span>
+              <span className="doctor-name">{t.nav.doctorName}</span>
               <span className="doctor-title">{t.nav.dentist}</span>
               <span className="clinic-location">{t.nav.clinic}</span>
             </div>
@@ -161,7 +175,7 @@ function App() {
             <button 
               className="nav-fr-label" 
               style={{ background: 'transparent', border: 'none', cursor: 'pointer', fontFamily: 'monospace', fontWeight: 'bold', fontSize: '15px', color: 'var(--primary-dark)' }} 
-              onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
+              onClick={toggleLang}
             >
               {lang.toUpperCase()}
             </button>
@@ -194,6 +208,23 @@ function App() {
         </nav>
         <div className="mobile-menu-footer">
           <a href="tel:92691615" className="mobile-menu-phone">📞 92 691 615</a>
+          <button 
+            className="nav-fr-label" 
+            style={{ 
+              background: 'rgba(94, 135, 108, 0.1)', 
+              border: 'none', 
+              cursor: 'pointer', 
+              fontFamily: 'monospace', 
+              fontWeight: 'bold', 
+              fontSize: '15px', 
+              color: 'var(--primary-dark)',
+              padding: '0.5rem 1rem',
+              borderRadius: '50px'
+            }} 
+            onClick={toggleLang}
+          >
+            {lang.toUpperCase()}
+          </button>
         </div>
       </div>
       {/* Mobile menu backdrop */}
@@ -531,7 +562,7 @@ function App() {
         <div className="container">
           <div className="footer-grid">
             <div className="footer-col-1">
-              <h3 className="font-serif mb-1" style={{ fontSize: '1.2rem', paddingTop: '3rem', color: '#faf8f5' }}>Dr Nawres Ben Salah</h3>
+              <h3 className="font-serif mb-1" style={{ fontSize: '1.2rem', paddingTop: '3rem', color: '#faf8f5' }}>{t.footer.doctorName}</h3>
               <p style={{ fontSize: '0.75rem', color: '#7d8881', marginBottom: '1.2rem' }}>{t.footer.role}</p>
               <p className="mb-6 text-sm" style={{ color: '#bbc0bb', lineHeight: 1.6, maxWidth: '300px' }}>{t.footer.description}</p>
               <ul className="footer-contact-list">
@@ -564,8 +595,8 @@ function App() {
               <div className="map-container mb-4 overflow-hidden" style={{ borderRadius: '16px' }}>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12768.89329364533!2d10.277329!3d36.861073!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e2b534d1f5d9a7%3A0x1e7562a99f98ae22!2sCabinet%20dentaire%20-%20Dr%20Nawres%20Ben%20Salah%20-%20M%C3%A9decin%20Dentiste!5e0!3m2!1sfr!2stn!4v1775079138244!5m2!1sfr!2stn" width="100%" height="160" style={{ border: 0, borderRadius: '16px' }} allowFullScreen={false} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
               </div>
-              <a href="https://maps.google.com/?q=36.861073,10.277329" target="_blank" rel="noreferrer" className="flex items-center gap-2 transition-colors mb-6 pb-2 hover:text-white" style={{ color: '#bbc0bb', fontSize: '0.85rem', textDecoration: 'underline', textUnderlineOffset: '4px' }}>
-                <MapPin size={16} /> Calculer l'itinéraire
+              <a href="https://maps.app.goo.gl/eiZMeHUV8AgfcdHP6" target="_blank" rel="noreferrer" className="flex items-center gap-2 transition-colors mb-6 pb-2 hover:text-white" style={{ color: '#bbc0bb', fontSize: '0.85rem', textDecoration: 'underline', textUnderlineOffset: '4px' }}>
+                <MapPin size={16} /> {t.footer.calcItinerary}
               </a>
 
               <div className="social-links flex gap-4" style={{ marginTop: '1.5rem' }}>

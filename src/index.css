@@ -1405,3 +1405,132 @@ footer {
     display: none;
   }
 }
+
+/* ==========================================
+   RTL SUPPORT (ARABIC)
+   ========================================== */
+
+[dir="rtl"] body {
+  font-family: 'DM Sans', 'Inter', sans-serif;
+}
+
+[dir="rtl"] .hero-content {
+  transform: translateX(18rem);
+  text-align: right;
+}
+
+@media (max-width: 1600px) {
+  [dir="rtl"] .hero-content {
+    transform: translateX(13rem);
+  }
+}
+
+@media (max-width: 1200px) {
+  [dir="rtl"] .hero-content {
+    transform: translateX(7rem);
+  }
+}
+
+@media (max-width: 768px) {
+  [dir="rtl"] .hero-content {
+    transform: translateX(0);
+    text-align: right;
+  }
+}
+
+[dir="rtl"] .hero::before {
+  background: linear-gradient(to left, rgba(244, 241, 234, 0.95) 0%, rgba(244, 241, 234, 0.6) 55%, rgba(244, 241, 234, 0.1) 100%);
+}
+
+[dir="rtl"] .hero-stats-card {
+  right: auto;
+  left: 5%;
+}
+
+[dir="rtl"] .premium-floating-badge {
+  right: auto;
+  left: -2rem;
+}
+
+@media (max-width: 768px) {
+  [dir="rtl"] .premium-floating-badge {
+    left: 0;
+  }
+}
+
+[dir="rtl"] .quote-icon-outer {
+  left: auto;
+  right: 40px;
+}
+
+[dir="rtl"] .mobile-menu-link {
+  padding: 0.55rem 1rem 0.55rem 0;
+  text-align: right;
+}
+
+[dir="rtl"] .mobile-menu-link::before {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .mobile-menu-link:active,
+[dir="rtl"] .mobile-menu-link:hover {
+  padding-left: 0;
+  padding-right: 1.6rem;
+}
+
+[dir="rtl"] .footer-col-1,
+[dir="rtl"] .footer-col-2,
+[dir="rtl"] .footer-col-3 {
+  text-align: right;
+}
+
+[dir="rtl"] .footer-contact-list li {
+  justify-content: flex-start;
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .schedule-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .care-option {
+  text-align: right;
+}
+
+[dir="rtl"] .care-option:hover {
+  transform: translateX(-4px);
+}
+
+[dir="rtl"] .summary-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .form-group label {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+[dir="rtl"] .form-actions {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .back-btn {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .nav-rdv-desktop {
+  margin-right: 1.5rem;
+  margin-left: 0 !important;
+}
+
+[dir="rtl"] .nav-fr-label {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+/* Fix for mobile CTA alignment */
+[dir="rtl"] .mobile-bottom-cta-inner {
+  flex-direction: row-reverse;
+}

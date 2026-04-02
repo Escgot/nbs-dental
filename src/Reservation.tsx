@@ -22,8 +22,6 @@ const TIME_SLOTS = [
   '17:00', '17:30'
 ];
 
-const DAYS_OF_WEEK = ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'];
-
 function getDaysInMonth(year: number, month: number) {
   return new Date(year, month + 1, 0).getDate();
 }
@@ -31,11 +29,6 @@ function getDaysInMonth(year: number, month: number) {
 function getFirstDayOfMonth(year: number, month: number) {
   return new Date(year, month, 1).getDay();
 }
-
-const MONTHS_FR = [
-  'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-  'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
-];
 
 export default function Reservation({ lang }: { lang: Language }) {
   const t = translations[lang].reservation;
@@ -231,18 +224,18 @@ export default function Reservation({ lang }: { lang: Language }) {
                       <div className="calendar">
                         <div className="calendar-header">
                           <button className="cal-nav-btn" onClick={prevMonth}>
-                            <ChevronLeft size={18} />
+                            {lang === 'ar' ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
                           </button>
                           <span className="cal-month-label">
-                            {MONTHS_FR[viewMonth]} {viewYear}
+                            {t.months[viewMonth]} {viewYear}
                           </span>
                           <button className="cal-nav-btn" onClick={nextMonth}>
-                            <ChevronRight size={18} />
+                            {lang === 'ar' ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
                           </button>
                         </div>
 
                         <div className="calendar-grid">
-                          {DAYS_OF_WEEK.map((d) => (
+                          {t.days.map((d) => (
                             <div key={d} className="cal-day-header">{d}</div>
                           ))}
                           {calendarDays.map((dayObj, idx) => {
@@ -297,7 +290,7 @@ export default function Reservation({ lang }: { lang: Language }) {
                     </AnimatePresence>
 
                     <button className="back-btn" onClick={() => setStep(1)}>
-                      <ArrowLeft size={16} /> {t.backBtn}
+                      {lang === 'ar' ? <ChevronRight size={16} /> : <ArrowLeft size={16} />} {t.backBtn}
                     </button>
                   </div>
                 </motion.div>
@@ -316,7 +309,7 @@ export default function Reservation({ lang }: { lang: Language }) {
                     <div className="summary-row">
                       <span className="summary-label">{t.summaryDate}</span>
                       <span className="summary-value">
-                        {selectedDate?.toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US', {
+                        {selectedDate?.toLocaleDateString(lang === 'ar' ? 'ar-TN' : lang === 'fr' ? 'fr-FR' : 'en-US', {
                           weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
                         })}
                       </span>
@@ -372,7 +365,7 @@ export default function Reservation({ lang }: { lang: Language }) {
 
                     <div className="form-actions">
                       <button type="button" className="back-btn" onClick={() => setStep(2)}>
-                        <ArrowLeft size={16} /> {t.backBtn}
+                        {lang === 'ar' ? <ChevronRight size={16} /> : <ArrowLeft size={16} />} {t.backBtn}
                       </button>
                       <button type="submit" className="confirm-btn">
                         {t.confirmBtn}
@@ -399,7 +392,7 @@ export default function Reservation({ lang }: { lang: Language }) {
                   <p className="success-text">
                     {t.successThanks} {formData.name}. {t.successText1} <strong>{(t.careTypes as any)[selectedCare || '']}</strong> {t.successText2}{' '}
                     <strong>
-                      {selectedDate?.toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US', {
+                      {selectedDate?.toLocaleDateString(lang === 'ar' ? 'ar-TN' : lang === 'fr' ? 'fr-FR' : 'en-US', {
                         weekday: 'long',
                         day: 'numeric',
                         month: 'long'
