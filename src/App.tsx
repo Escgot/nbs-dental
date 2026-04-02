@@ -382,7 +382,7 @@ function App() {
                   <motion.img
                     key={currentDoctorImg}
                     src={DOCTOR_IMAGES[currentDoctorImg]}
-                    alt="Dr Nawres Ben Salah"
+                    alt={t.nav.doctorName}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
@@ -611,7 +611,7 @@ function App() {
           </div>
 
           <div className="footer-bottom" style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem', paddingBottom: '1.5rem', textAlign: 'center' }}>
-            <p style={{ color: '#bbc0bb', fontSize: '0.85rem', letterSpacing: '0.5px' }}>© {new Date().getFullYear()} Dr Nawres Ben Salah — {t.footer.rights}</p>
+            <p style={{ color: '#bbc0bb', fontSize: '0.85rem', letterSpacing: '0.5px' }}>© {new Date().getFullYear()} {t.footer.doctorName} — {t.footer.rights}</p>
           </div>
 
           <div className="watermark" style={{ display: 'none' }}>
