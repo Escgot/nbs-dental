@@ -159,8 +159,8 @@ function App() {
           </ul>
           <div className="flex items-center gap-4">
             <button 
-              className="nav-fr-label btn-outline" 
-              style={{ padding: '0.25rem 0.5rem', borderRadius: '8px', cursor: 'pointer', fontFamily: 'monospace' }} 
+              className="nav-fr-label" 
+              style={{ background: 'transparent', border: 'none', cursor: 'pointer', fontFamily: 'monospace', fontWeight: 'bold', fontSize: '15px', color: 'var(--primary-dark)' }} 
               onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
             >
               {lang.toUpperCase()}
@@ -359,7 +359,7 @@ function App() {
                     className="doctor-slider-img"
                   />
                 </AnimatePresence>
-                
+
                 <div className="doctor-slider-nav">
                   <button className="slider-arrow prev" onClick={prevDoctorImg}>
                     <ChevronLeft size={18} />
@@ -368,11 +368,11 @@ function App() {
                     <ChevronRight size={18} />
                   </button>
                 </div>
-                
+
                 <div className="doctor-slider-dots">
                   {DOCTOR_IMAGES.map((_, i) => (
-                    <div 
-                      key={i} 
+                    <div
+                      key={i}
                       className={`slider-dot ${i === currentDoctorImg ? 'active' : ''}`}
                       onClick={() => setCurrentDoctorImg(i)}
                     />
@@ -392,7 +392,7 @@ function App() {
               viewport={{ once: true }}
               variants={staggerContainer}
             >
-               <span
+              <span
                 className="text-primary uppercase"
                 style={{
                   fontFamily: "'DM Sans', sans-serif",
