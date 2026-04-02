@@ -480,8 +480,8 @@ function App() {
         <div className="container">
           <div className="footer-grid">
             <div className="footer-col-1">
-              <h3 className="font-serif text-white mb-1" style={{ fontSize: '1.2rem', paddingTop: '3rem' }}>Dr Nawres Ben Salah</h3>
-              <p style={{ fontSize: '0.75rem', color: '#bbc0bb', marginBottom: '1.2rem' }}>{t.footer.role}</p>
+              <h3 className="font-serif mb-1" style={{ fontSize: '1.2rem', paddingTop: '3rem', color: '#faf8f5' }}>Dr Nawres Ben Salah</h3>
+              <p style={{ fontSize: '0.75rem', color: '#7d8881', marginBottom: '1.2rem' }}>{t.footer.role}</p>
               <p className="mb-6 text-sm" style={{ color: '#bbc0bb', lineHeight: 1.6, maxWidth: '300px' }}>{t.footer.description}</p>
               <ul className="footer-contact-list">
                 <li><Phone size={16} /> <span style={{ fontFamily: 'monospace' }}>92 691 615</span></li>
@@ -491,7 +491,7 @@ function App() {
             </div>
 
             <div className="footer-col-2">
-              <h3 className="font-serif text-white flex items-center gap-2" style={{ fontSize: '1.1rem', marginBottom: '1.2rem', paddingTop: '3rem' }}><Clock size={18} /> {t.footer.scheduleTitle}</h3>
+              <h3 className="font-serif flex items-center gap-2" style={{ fontSize: '1.1rem', marginBottom: '1.2rem', paddingTop: '3rem', color: '#faf8f5' }}><Clock size={18} /> {t.footer.scheduleTitle}</h3>
               <div className="schedule-list">
                 <div className="schedule-row">
                   <span>{t.footer.schedule.monFri}</span>
@@ -503,13 +503,13 @@ function App() {
                 </div>
                 <div className="schedule-row">
                   <span>{t.footer.schedule.sun}</span>
-                  <span style={{ color: '#bbc0bb' }}>{t.footer.schedule.sunTime}</span>
+                  <span style={{ color: '#7d8881' }}>{t.footer.schedule.sunTime}</span>
                 </div>
               </div>
             </div>
 
             <div className="footer-col-3">
-              <h3 className="font-serif text-white flex items-center gap-2" style={{ fontSize: '1.1rem', marginBottom: '1.2rem', paddingTop: '3rem' }}><MapPin size={18} /> {t.footer.findUs}</h3>
+              <h3 className="font-serif flex items-center gap-2" style={{ fontSize: '1.1rem', marginBottom: '1.2rem', paddingTop: '3rem', color: '#faf8f5' }}><MapPin size={18} /> {t.footer.findUs}</h3>
               <div className="map-container mb-4 overflow-hidden" style={{ borderRadius: '16px' }}>
                 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12768.89329364533!2d10.277329!3d36.861073!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e2b534d1f5d9a7%3A0x1e7562a99f98ae22!2sCabinet%20dentaire%20-%20Dr%20Nawres%20Ben%20Salah%20-%20M%C3%A9decin%20Dentiste!5e0!3m2!1sfr!2stn!4v1775079138244!5m2!1sfr!2stn" width="100%" height="160" style={{ border: 0, borderRadius: '16px' }} allowFullScreen={false} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
               </div>
