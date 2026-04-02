@@ -294,18 +294,18 @@ a {
   z-index: 10;
   color: var(--text-dark);
   max-width: 650px;
-  transform: translateX(-15rem);
+  transform: translateX(-18rem);
 }
 
 @media (max-width: 1600px) {
   .hero-content {
-    transform: translateX(-10rem);
+    transform: translateX(-13rem);
   }
 }
 
 @media (max-width: 1200px) {
   .hero-content {
-    transform: translateX(-4rem);
+    transform: translateX(-7rem);
   }
 }
 
@@ -727,7 +727,7 @@ a {
 /* Footer */
 footer {
   background-color: var(--secondary-color);
-  color: var(--white);
+  color: #bbc0bb;
   padding: 2.5rem 0 0;
   position: relative;
   overflow: hidden;
