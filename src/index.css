@@ -543,7 +543,7 @@ a {
   box-shadow: 0 40px 100px rgba(0, 0, 0, 0.12);
   border: 1px solid rgba(0, 0, 0, 0.04);
   overflow: hidden;
-  height: 520px;
+  height: 600px;
   animation: float-slow 6s ease-in-out infinite;
   display: flex !important;
   /* Ensure content is visible */
@@ -976,6 +976,10 @@ footer {
 
   .doctor-image {
     height: 400px;
+  }
+
+  .doctor-image-premium-frame {
+    height: 450px;
   }
 
   .footer-grid {
