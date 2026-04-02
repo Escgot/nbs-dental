@@ -211,7 +211,7 @@ function App() {
             <motion.h1 variants={fadeInUp} className="mb-6">
               <span style={{ color: '#293d33' }}>{t.hero.titlePart1}</span> <span style={{ color: '#5e876c' }}>{t.hero.titlePart2}</span>
             </motion.h1>
-            <motion.p variants={fadeInUp}>
+            <motion.p variants={fadeInUp} style={{ color: '#677e6f' }}>
               {t.hero.description}
             </motion.p>
             <motion.div variants={fadeInUp} className="hero-buttons">
