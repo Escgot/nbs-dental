@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import {
   Phone, Clock, MapPin, Mail,
@@ -80,6 +80,12 @@ const testimonials = [
   }
 ];
 
+const DOCTOR_IMAGES = [
+  "/images/doctor.jpg",
+  "/images/doctor1.jpg",
+  "/images/doctor2.jpg"
+];
+
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -87,6 +93,7 @@ function App() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [lang, setLang] = useState<Language>('fr');
+  const [currentDoctorImg, setCurrentDoctorImg] = useState(0);
   const servicesRef = useRef<HTMLDivElement>(null);
 
   const t = translations[lang];
@@ -99,6 +106,14 @@ function App() {
 
   const prevTestimonial = () => {
     setCurrentTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  };
+
+  const nextDoctorImg = () => {
+    setCurrentDoctorImg((prev) => (prev === DOCTOR_IMAGES.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevDoctorImg = () => {
+    setCurrentDoctorImg((prev) => (prev === 0 ? DOCTOR_IMAGES.length - 1 : prev - 1));
   };
 
   useEffect(() => {
@@ -325,13 +340,49 @@ function App() {
         <div className="container">
           <div className="doctor-grid">
             <motion.div
-              className="doctor-image"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              className="doctor-image-wrapper"
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <img src="/images/doctor.jpg" alt="Dr Nawres Ben Salah" />
+              <div className="doctor-image-premium-frame">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={currentDoctorImg}
+                    src={DOCTOR_IMAGES[currentDoctorImg]}
+                    alt="Dr Nawres Ben Salah"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.4 }}
+                    className="doctor-slider-img"
+                  />
+                </AnimatePresence>
+                
+                <div className="doctor-slider-nav">
+                  <button className="slider-arrow prev" onClick={prevDoctorImg}>
+                    <ChevronLeft size={18} />
+                  </button>
+                  <button className="slider-arrow next" onClick={nextDoctorImg}>
+                    <ChevronRight size={18} />
+                  </button>
+                </div>
+                
+                <div className="doctor-slider-dots">
+                  {DOCTOR_IMAGES.map((_, i) => (
+                    <div 
+                      key={i} 
+                      className={`slider-dot ${i === currentDoctorImg ? 'active' : ''}`}
+                      onClick={() => setCurrentDoctorImg(i)}
+                    />
+                  ))}
+                </div>
+              </div>
+              <div className="premium-floating-badge">
+                <ShieldPlus size={24} />
+                <span>Expertise Médicale</span>
+              </div>
             </motion.div>
 
             <motion.div
