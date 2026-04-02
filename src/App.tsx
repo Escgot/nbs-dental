@@ -158,14 +158,14 @@ function App() {
       {/* Navigation */}
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${isVisible ? '' : 'hidden-nav'}`}>
         <div className="container">
-          <div className="logo-wrapper">
-            <img src="/images/my-logo.png" alt="Dr Nawres Logo" className="nav-logo-img" />
+          <a href="#" className="logo-wrapper" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+            <img src="/images/my-logo.png" alt={t.nav.doctorName} className="nav-logo-img" />
             <div className="logo-text">
               <span className="doctor-name">{t.nav.doctorName}</span>
               <span className="doctor-title">{t.nav.dentist}</span>
               <span className="clinic-location">{t.nav.clinic}</span>
             </div>
-          </div>
+          </a>
           <ul className="nav-links">
             <li><a href="#accueil">{t.nav.home}</a></li>
             <li><a href="#services">{t.nav.services}</a></li>
