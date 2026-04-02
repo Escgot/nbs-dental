@@ -563,8 +563,8 @@ function App() {
           <div className="footer-grid">
             <div className="footer-col-1">
               <h3 className="font-serif mb-1" style={{ fontSize: '1.2rem', paddingTop: '3rem', color: '#faf8f5' }}>{t.footer.doctorName}</h3>
-              <p style={{ fontSize: '0.75rem', color: '#7d8881', marginBottom: '1.2rem' }}>{t.footer.role}</p>
-              <p className="mb-6 text-sm" style={{ color: '#bbc0bb', lineHeight: 1.6, maxWidth: '300px' }}>{t.footer.description}</p>
+              <p style={{ fontSize: '0.75rem', color: '#7d8881', marginBottom: '0.6rem' }}>{t.footer.role}</p>
+              <p className="text-sm" style={{ color: '#bbc0bb', lineHeight: 1.6, maxWidth: '300px', marginBottom: '2.5rem' }}>{t.footer.description}</p>
               <ul className="footer-contact-list">
                 <li><Phone size={16} /> <span style={{ fontFamily: 'monospace' }}>92 691 615</span></li>
                 <li><Mail size={16} /> <span>drbensalahnawres@gmail.com</span></li>
