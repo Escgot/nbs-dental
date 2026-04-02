@@ -1,0 +1,601 @@
+/* ==========================================
+   RESERVATION SECTION
+   ========================================== */
+
+.reservation-section {
+  padding: 5rem 0 6rem;
+  background: #f9f7f3;
+}
+
+.reservation-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.reservation-label {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.reservation-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  letter-spacing: -0.5px;
+}
+
+/* Card Container */
+.reservation-card {
+  max-width: 780px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 28px;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.04),
+    0 20px 60px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+/* ==========================================
+   STEPPER
+   ========================================== */
+
+.stepper {
+  display: flex;
+  background: rgba(0, 0, 0, 0.015);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.stepper-step {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1.1rem 1rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.stepper-step.active {
+  background: rgba(94, 135, 108, 0.04);
+}
+
+.stepper-step.active .stepper-circle {
+  background: var(--white);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(94, 135, 108, 0.12);
+}
+
+.stepper-step.active .stepper-text {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.stepper-step.completed .stepper-circle {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.stepper-step.completed .stepper-text {
+  color: var(--primary-color);
+}
+
+.stepper-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: 'DM Sans', sans-serif;
+  color: rgba(0, 0, 0, 0.35);
+  background: transparent;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.stepper-text {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.35);
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+/* ==========================================
+   BODY / CONTENT AREA
+   ========================================== */
+
+.reservation-body {
+  padding: 2.5rem 3rem 3rem;
+  min-height: 320px;
+}
+
+.step-question {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+/* ==========================================
+   STEP 1: CARE OPTIONS
+   ========================================== */
+
+.care-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.care-option {
+  display: block;
+  width: 100%;
+  padding: 1.1rem 1.5rem;
+  border: 1.5px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s ease;
+}
+
+.care-option:hover {
+  border-color: var(--primary-color);
+  background: rgba(94, 135, 108, 0.03);
+  transform: translateX(4px);
+}
+
+.care-option.selected {
+  border-color: var(--primary-color);
+  background: rgba(94, 135, 108, 0.06);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* ==========================================
+   STEP 2: CALENDAR
+   ========================================== */
+
+.step2-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.calendar {
+  width: 320px;
+  background: var(--white);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.cal-month-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.cal-nav-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-dark);
+  transition: all 0.2s ease;
+}
+
+.cal-nav-btn:hover {
+  background: rgba(94, 135, 108, 0.06);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.cal-day-header {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.35);
+  text-align: center;
+  padding: 0.5rem 0;
+  text-transform: capitalize;
+}
+
+.cal-day {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.cal-day:hover:not(.cal-day-disabled):not(.cal-day-outside) {
+  background: rgba(94, 135, 108, 0.08);
+}
+
+.cal-day-outside {
+  color: rgba(0, 0, 0, 0.15);
+  cursor: default;
+}
+
+.cal-day-disabled {
+  color: rgba(0, 0, 0, 0.15);
+  cursor: not-allowed;
+}
+
+.cal-day-today {
+  background: rgba(94, 135, 108, 0.1);
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.cal-day-selected {
+  background: var(--primary-color) !important;
+  color: white !important;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(94, 135, 108, 0.35);
+}
+
+/* ==========================================
+   STEP 2: TIME SLOTS
+   ========================================== */
+
+.timeslots-section {
+  overflow: hidden;
+}
+
+.timeslots-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+}
+
+.timeslot {
+  padding: 0.8rem 0.5rem;
+  border: 1.5px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.timeslot:hover {
+  border-color: var(--primary-color);
+  background: rgba(94, 135, 108, 0.04);
+}
+
+.timeslot.selected {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(94, 135, 108, 0.3);
+}
+
+/* ==========================================
+   BACK BUTTON
+   ========================================== */
+
+.back-btn {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.2rem;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1.5rem;
+}
+
+.back-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background: rgba(94, 135, 108, 0.03);
+}
+
+/* ==========================================
+   STEP 3: CONFIRMATION
+   ========================================== */
+
+.summary-card {
+  background: var(--bg-light);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+}
+
+.summary-row:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.summary-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+.summary-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-transform: capitalize;
+}
+
+/* Form */
+.confirmation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.form-group input {
+  padding: 0.85rem 1rem;
+  border: 1.5px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  background: transparent;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.form-group input::placeholder {
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.form-group input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(94, 135, 108, 0.08);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.confirm-btn {
+  padding: 0.85rem 2rem;
+  border-radius: 50px;
+  border: none;
+  background: var(--primary-color);
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(94, 135, 108, 0.3);
+}
+
+.confirm-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(94, 135, 108, 0.5);
+}
+
+/* ==========================================
+   SUCCESS STATE
+   ========================================== */
+
+.success-state {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.success-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), #7ead8c);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 8px 24px rgba(94, 135, 108, 0.35);
+  animation: successPulse 0.6s ease-out;
+}
+
+@keyframes successPulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.success-state .step-question {
+  justify-content: center;
+  font-size: 1.3rem;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 1rem;
+}
+
+.success-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--text-dark);
+  line-height: 1.7;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.success-text strong {
+  color: var(--primary-color);
+}
+
+.success-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 0.5rem;
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 768px) {
+  .reservation-title {
+    font-size: 2rem;
+  }
+
+  .reservation-body {
+    padding: 2rem 1.5rem 2.5rem;
+  }
+
+  .stepper-text {
+    font-size: 0.72rem;
+  }
+
+  .stepper-step {
+    padding: 0.9rem 0.5rem;
+    gap: 0.4rem;
+  }
+
+  .stepper-circle {
+    width: 24px;
+    height: 24px;
+    font-size: 0.7rem;
+  }
+
+  .timeslots-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .calendar {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
+
+  .form-actions .back-btn {
+    margin-top: 0;
+  }
+
+  .confirm-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .reservation-body {
+    padding: 1.5rem 1.25rem 2rem;
+  }
+
+  .stepper-text {
+    font-size: 0.65rem;
+  }
+
+  .timeslots-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
