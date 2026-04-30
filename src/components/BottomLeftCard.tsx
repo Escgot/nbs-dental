@@ -5,9 +5,21 @@ const BottomLeftCard = ({ t }: { t: any }) => {
   return (
     <motion.div
       initial={{ x: -20, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
-      className="absolute bottom-24 left-4 right-auto md:left-6 md:right-auto md:bottom-6 lg:bottom-10 lg:left-10 p-3 md:p-4 lg:p-5 rounded-[1.2rem] md:rounded-[1.5rem] lg:rounded-[2.2rem] bg-white/30 backdrop-blur-xl flex flex-col gap-2 lg:gap-3 min-w-[140px] md:min-w-[150px] lg:min-w-[180px] w-fit border border-white/20 shadow-lg"
+      animate={{ 
+        x: 0, 
+        opacity: 1,
+        y: [0, -8, 0] 
+      }}
+      transition={{ 
+        opacity: { duration: 0.8, delay: 0.2 },
+        x: { duration: 0.8, delay: 0.2 },
+        y: { 
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }
+      }}
+      className="absolute bottom-16 left-4 right-auto md:left-6 md:right-auto md:bottom-6 lg:bottom-10 lg:left-10 p-3 md:p-4 lg:p-5 rounded-[1.2rem] md:rounded-[1.5rem] lg:rounded-[2.2rem] bg-white/30 backdrop-blur-xl flex flex-col gap-2 lg:gap-3 min-w-[140px] md:min-w-[150px] lg:min-w-[180px] w-fit border border-white/20 shadow-lg z-20"
     >
       <div className="flex flex-col">
         <span className="text-2xl md:text-3xl font-normal text-[rgba(37,63,49,0.95)] tracking-tight leading-tight" dir="ltr">92 691 615</span>
