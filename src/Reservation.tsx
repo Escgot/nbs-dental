@@ -1,8 +1,8 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Calendar, Clock, ChevronLeft, ChevronRight, Check, ArrowLeft,
-  User, Phone, Mail
+  ChevronLeft, ChevronRight, Check, ArrowLeft,
+  User, Phone, Mail, ArrowUpRight, MapPin
 } from 'lucide-react';
 import { translations } from './translations';
 import type { Language } from './translations';
@@ -11,7 +11,9 @@ const CARE_TYPES = [
   'Détartrage',
   'Urgence',
   'Blanchiment',
-  'Autre type de soin'
+  'Implants',
+  'Facettes',
+  'Autre soin'
 ];
 
 const TIME_SLOTS = [
@@ -116,7 +118,7 @@ export default function Reservation({ lang }: { lang: Language }) {
 
   function handleSelectCare(care: string) {
     setSelectedCare(care);
-    setTimeout(() => setStep(2), 300);
+    setTimeout(() => setStep(2), 400);
   }
 
   function handleSelectDate(date: Date) {
@@ -126,7 +128,7 @@ export default function Reservation({ lang }: { lang: Language }) {
 
   function handleSelectTime(time: string) {
     setSelectedTime(time);
-    setTimeout(() => setStep(3), 300);
+    setTimeout(() => setStep(3), 400);
   }
 
   function handleSubmit(e: React.FormEvent) {
@@ -144,67 +146,66 @@ export default function Reservation({ lang }: { lang: Language }) {
   }
 
   const stepVariants = {
-    enter: { opacity: 0, x: 40 },
-    center: { opacity: 1, x: 0, transition: { duration: 0.35, ease: 'easeOut' as const } },
-    exit: { opacity: 0, x: -40, transition: { duration: 0.25, ease: 'easeIn' as const } }
+    enter: { opacity: 0, x: 20 },
+    center: { opacity: 1, x: 0, transition: { duration: 0.3 } },
+    exit: { opacity: 0, x: -20, transition: { duration: 0.2 } }
   };
 
   return (
-    <section id="reservation" className="reservation-section">
-      <div className="container">
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="reservation-header"
-          >
-            <span className="reservation-label">{t.overline}</span>
-            <h2 className="reservation-title">{t.title}</h2>
-          </motion.div>
+    <section className="reservation-section">
+      <div className="reservation-box">
+        {/* Left Column */}
+        <div className="res-left">
+          <span className="res-overline">{t.overline}</span>
+          <h2 className="res-title">{t.title}</h2>
+          <p className="res-desc">{t.description}</p>
+          
+          <div className="res-contact-pills">
+            <a href="tel:92691615" className="res-contact-pill">
+              <Phone size={16} />
+              <span dir="ltr">92 691 615</span>
+            </a>
+            <a href="https://maps.app.goo.gl/ijZSS8r19uv9zbci6" target="_blank" rel="noopener noreferrer" className="res-contact-pill">
+              <MapPin size={16} />
+              <span>{t.shortAddress}</span>
+            </a>
+          </div>
+        </div>
 
-        <motion.div
-          className="reservation-card"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          {/* Stepper */}
-          <div className="stepper">
-            <div className={`stepper-step ${step > 1 ? 'completed' : ''} ${step === 1 ? 'active' : ''}`}>
-              <div className="stepper-circle">
-                {step > 1 ? <Check size={14} strokeWidth={3} /> : '1'}
-              </div>
-              <span className="stepper-text">{t.step1}</span>
+        {/* Right Column */}
+        <div className="res-right">
+          <div className="stepper-new">
+            <div className={`step-new ${step >= 1 ? 'active' : ''}`}>
+              <div className="step-num">{step > 1 ? <Check size={12} /> : '1'}</div>
+              <span>{t.step1}</span>
             </div>
-            <div className={`stepper-step ${step > 2 ? 'completed' : ''} ${step === 2 ? 'active' : ''}`}>
-              <div className="stepper-circle">
-                {step > 2 ? <Check size={14} strokeWidth={3} /> : '2'}
-              </div>
-              <span className="stepper-text">{t.step2}</span>
+            <div className={`step-new ${step >= 2 ? 'active' : ''}`}>
+              <div className="step-num">{step > 2 ? <Check size={12} /> : '2'}</div>
+              <span>{t.step2}</span>
             </div>
-            <div className={`stepper-step ${step === 3 ? 'active' : ''}`}>
-              <div className="stepper-circle">3</div>
-              <span className="stepper-text">{t.step3}</span>
+            <div className={`step-new ${step >= 3 ? 'active' : ''}`}>
+              <div className="step-num">3</div>
+              <span>{t.step3}</span>
             </div>
           </div>
 
-          {/* Steps Content */}
-          <div className="reservation-body">
+          <div className="res-body">
             <AnimatePresence mode="wait">
               {/* Step 1 */}
               {step === 1 && (
                 <motion.div key="step1" variants={stepVariants} initial="enter" animate="center" exit="exit">
-                  <h3 className="step-question">{t.careQuestion}</h3>
-                  <div className="care-options">
+                  <h3 className="res-question">{t.careQuestion}</h3>
+                  <div className="care-options-grid">
                     {CARE_TYPES.map((care) => (
                       <button
                         key={care}
-                        className={`care-option ${selectedCare === care ? 'selected' : ''}`}
+                        className={`care-option-pill ${selectedCare === care ? 'selected' : ''}`}
                         onClick={() => handleSelectCare(care)}
                       >
-                        {(t.careTypes as any)[care]}
+                        <span>{(t.careTypes as any)[care] || care}</span>
+                        <div className="care-option-icon">
+                          {selectedCare === care ? <Check size={14} /> : <ArrowUpRight size={14} />}
+                        </div>
                       </button>
                     ))}
                   </div>
@@ -214,40 +215,35 @@ export default function Reservation({ lang }: { lang: Language }) {
               {/* Step 2 */}
               {step === 2 && (
                 <motion.div key="step2" variants={stepVariants} initial="enter" animate="center" exit="exit">
-                  <div className="step2-content">
-                    <h3 className="step-question">
-                      <Calendar size={20} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
-                      {t.dateQuestion}
-                    </h3>
-
-                    <div className="calendar-wrapper">
-                      <div className="calendar">
-                        <div className="calendar-header">
-                          <button className="cal-nav-btn" onClick={prevMonth}>
+                  <div className="step2-content-new">
+                    <div>
+                      <h3 className="res-question">{t.dateQuestion}</h3>
+                      <div className="calendar-new">
+                        <div className="cal-header-new">
+                          <button className="cal-nav-new" onClick={prevMonth}>
                             {lang === 'ar' ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
                           </button>
-                          <span className="cal-month-label">
+                          <span className="cal-month-new">
                             {t.months[viewMonth]} {viewYear}
                           </span>
-                          <button className="cal-nav-btn" onClick={nextMonth}>
+                          <button className="cal-nav-new" onClick={nextMonth}>
                             {lang === 'ar' ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
                           </button>
                         </div>
-
-                        <div className="calendar-grid">
+                        <div className="cal-grid-new">
                           {t.days.map((d) => (
-                            <div key={d} className="cal-day-header">{d}</div>
+                            <div key={d} className="cal-day-header-new">{d}</div>
                           ))}
                           {calendarDays.map((dayObj, idx) => {
                             const disabled = !dayObj.inMonth || isPast(dayObj.date) || isSunday(dayObj.date);
                             return (
                               <button
                                 key={idx}
-                                className={`cal-day
+                                className={`cal-day-new
                                   ${!dayObj.inMonth ? 'cal-day-outside' : ''}
                                   ${isToday(dayObj.date) && dayObj.inMonth ? 'cal-day-today' : ''}
-                                  ${isSelected(dayObj.date) && dayObj.inMonth ? 'cal-day-selected' : ''}
-                                  ${disabled ? 'cal-day-disabled' : ''}
+                                  ${isSelected(dayObj.date) && dayObj.inMonth ? 'selected' : ''}
+                                  ${disabled ? 'disabled' : ''}
                                 `}
                                 onClick={() => !disabled && handleSelectDate(dayObj.date)}
                                 disabled={disabled}
@@ -260,74 +256,66 @@ export default function Reservation({ lang }: { lang: Language }) {
                       </div>
                     </div>
 
-                    {/* Time slots — appear after date selection */}
-                    <AnimatePresence>
-                      {selectedDate && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="timeslots-section"
-                        >
-                          <h3 className="step-question" style={{ marginTop: '2rem' }}>
-                            <Clock size={20} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
-                            {t.timeQuestion}
-                          </h3>
-                          <div className="timeslots-grid">
-                            {TIME_SLOTS.map((time) => (
-                              <button
-                                key={time}
-                                className={`timeslot ${selectedTime === time ? 'selected' : ''}`}
-                                onClick={() => handleSelectTime(time)}
-                              >
-                                {time}
-                              </button>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-
-                    <button className="back-btn" onClick={() => setStep(1)}>
-                      {lang === 'ar' ? <ChevronRight size={16} /> : <ArrowLeft size={16} />} {t.backBtn}
-                    </button>
+                    <div className="timeslot-container-new">
+                      <AnimatePresence>
+                        {selectedDate && (
+                          <motion.div
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 20 }}
+                          >
+                            <h3 className="res-question">{t.timeQuestion}</h3>
+                            <div className="timeslots-grid-new">
+                              {TIME_SLOTS.map((time) => (
+                                <button
+                                  key={time}
+                                  className={`timeslot-new ${selectedTime === time ? 'selected' : ''}`}
+                                  onClick={() => handleSelectTime(time)}
+                                >
+                                  {time}
+                                </button>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   </div>
+
+                  <button className="back-btn-new" onClick={() => setStep(1)}>
+                    {lang === 'ar' ? <ChevronRight size={16} /> : <ArrowLeft size={16} />} {t.backBtn}
+                  </button>
                 </motion.div>
               )}
 
               {/* Step 3 */}
               {step === 3 && !submitted && (
-                <motion.div key="step3" variants={stepVariants} initial="enter" animate="center" exit="exit">
-                  <h3 className="step-question">{t.confirmTitle}</h3>
+                <motion.div key="step3" variants={stepVariants} initial="enter" animate="center" exit="exit" className="step3-wrapper">
+                  <h3 className="res-question">{t.confirmTitle}</h3>
 
-                  <div className="summary-card">
-                    <div className="summary-row">
-                      <span className="summary-label">{t.summaryCare}</span>
-                      <span className="summary-value">{(t.careTypes as any)[selectedCare || '']}</span>
+                  <div className="summary-card-new">
+                    <div className="summary-item-new">
+                      <span className="summary-label-new">{t.summaryCare}</span>
+                      <span className="summary-value-new">{selectedCare}</span>
                     </div>
-                    <div className="summary-row">
-                      <span className="summary-label">{t.summaryDate}</span>
-                      <span className="summary-value">
+                    <div className="summary-item-new">
+                      <span className="summary-label-new">{t.summaryDate}</span>
+                      <span className="summary-value-new">
                         {selectedDate?.toLocaleDateString(lang === 'ar' ? 'ar-TN' : lang === 'fr' ? 'fr-FR' : 'en-US', {
                           weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
                         })}
                       </span>
                     </div>
-                    <div className="summary-row">
-                      <span className="summary-label">{t.summaryTime}</span>
-                      <span className="summary-value">{selectedTime}</span>
+                    <div className="summary-item-new">
+                      <span className="summary-label-new">{t.summaryTime}</span>
+                      <span className="summary-value-new">{selectedTime}</span>
                     </div>
                   </div>
 
-                  <form className="confirmation-form" onSubmit={handleSubmit}>
-                    <div className="form-group">
-                      <label htmlFor="res-name">
-                        <User size={16} />
-                        {t.fullName}
-                      </label>
+                  <form className="confirmation-form-new" onSubmit={handleSubmit}>
+                    <div className="form-group-new">
+                      <label><User size={16} /> {t.fullName}</label>
                       <input
-                        id="res-name"
                         type="text"
                         placeholder={t.namePlaceholder}
                         value={formData.name}
@@ -335,13 +323,9 @@ export default function Reservation({ lang }: { lang: Language }) {
                         required
                       />
                     </div>
-                    <div className="form-group">
-                      <label htmlFor="res-phone">
-                        <Phone size={16} />
-                        {t.phone}
-                      </label>
+                    <div className="form-group-new">
+                      <label><Phone size={16} /> {t.phone}</label>
                       <input
-                        id="res-phone"
                         type="tel"
                         placeholder={t.phonePlaceholder}
                         value={formData.phone}
@@ -349,13 +333,9 @@ export default function Reservation({ lang }: { lang: Language }) {
                         required
                       />
                     </div>
-                    <div className="form-group">
-                      <label htmlFor="res-email">
-                        <Mail size={16} />
-                        {t.email}
-                      </label>
+                    <div className="form-group-new">
+                      <label><Mail size={16} /> {t.email}</label>
                       <input
-                        id="res-email"
                         type="email"
                         placeholder={t.emailPlaceholder}
                         value={formData.email}
@@ -363,11 +343,11 @@ export default function Reservation({ lang }: { lang: Language }) {
                       />
                     </div>
 
-                    <div className="form-actions">
-                      <button type="button" className="back-btn" onClick={() => setStep(2)}>
-                        {lang === 'ar' ? <ChevronRight size={16} /> : <ArrowLeft size={16} />} {t.backBtn}
+                    <div className="form-actions-new">
+                      <button type="button" className="back-btn-new" onClick={() => setStep(2)}>
+                        <ArrowLeft size={16} /> {t.backBtn}
                       </button>
-                      <button type="submit" className="confirm-btn">
+                      <button type="submit" className="confirm-btn-new">
                         {t.confirmBtn}
                       </button>
                     </div>
@@ -383,32 +363,30 @@ export default function Reservation({ lang }: { lang: Language }) {
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  className="success-state"
+                  className="success-state-new"
                 >
-                  <div className="success-icon">
+                  <div className="success-icon-new">
                     <Check size={40} strokeWidth={3} />
                   </div>
-                  <h3 className="step-question">{t.successTitle}</h3>
-                  <p className="success-text">
-                    {t.successThanks} {formData.name}. {t.successText1} <strong>{(t.careTypes as any)[selectedCare || '']}</strong> {t.successText2}{' '}
+                  <h3 className="res-question">{t.successTitle}</h3>
+                  <p className="success-text-new">
+                    {t.successThanks} {formData.name}. {t.successText1} <strong>{selectedCare}</strong> {t.successText2}{' '}
                     <strong>
                       {selectedDate?.toLocaleDateString(lang === 'ar' ? 'ar-TN' : lang === 'fr' ? 'fr-FR' : 'en-US', {
-                        weekday: 'long',
-                        day: 'numeric',
-                        month: 'long'
+                        weekday: 'long', day: 'numeric', month: 'long'
                       })}
                     </strong>{' '}
                     {t.successText3} <strong>{selectedTime}</strong>.
                   </p>
-                  <p className="success-sub">{t.successSub}</p>
-                  <button className="confirm-btn" onClick={resetForm} style={{ marginTop: '1.5rem' }}>
+                  <p className="success-sub-new">{t.successSub}</p>
+                  <button className="confirm-btn-new" onClick={resetForm} style={{ marginTop: '2rem' }}>
                     {t.anotherBtn}
                   </button>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

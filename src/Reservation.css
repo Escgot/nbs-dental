@@ -3,599 +3,583 @@
    ========================================== */
 
 .reservation-section {
-  padding: 5rem 0 6rem;
-  background: #f9f7f3;
+  display: flex;
+  justify-content: center;
 }
 
-.reservation-header {
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-.reservation-label {
-  display: inline-block;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 400;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
-}
-
-.reservation-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.75rem;
-  font-weight: 700;
-  color: var(--primary-dark);
-  letter-spacing: -0.5px;
-}
-
-/* Card Container */
-.reservation-card {
-  max-width: 780px;
-  margin: 0 auto;
-  background: var(--white);
-  border-radius: 28px;
-  box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.04),
-    0 20px 60px rgba(0, 0, 0, 0.03);
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  overflow: hidden;
+.reservation-box {
+  background-color: #2d4638; /* Requested dark green */
+  border-radius: 40px;
+  display: flex;
+  width: 100%;
+  padding: 1.5rem;
+  gap: 2rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
 }
 
 /* ==========================================
-   STEPPER
+   LEFT COLUMN
    ========================================== */
 
-.stepper {
+.res-left {
+  flex: 1;
+  padding: 3rem 2rem;
+  color: white;
   display: flex;
-  background: rgba(0, 0, 0, 0.015);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  flex-direction: column;
 }
 
-.stepper-step {
-  flex: 1;
+.res-overline {
+  color: #D3C49D; /* Soft gold/beige */
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.res-title {
+  font-size: 3.5rem;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -1px;
+  color: white;
+}
+
+.res-desc {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 3.5rem;
+  max-width: 90%;
+  line-height: 1.6;
+}
+
+.res-contact-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.res-contact-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  width: fit-content;
+  color: white;
+  transition: background-color 0.2s;
+}
+
+.res-contact-pill:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================
+   RIGHT COLUMN
+   ========================================== */
+
+.res-right {
+  flex: 1.2;
+  background-color: #eef0ef; /* Requested subtle off-white */
+  border-radius: 32px;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Stepper */
+.stepper-new {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.step-new {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 0.6rem;
-  padding: 1.1rem 1rem;
-  position: relative;
-  transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.04);
+  padding: 0.4rem 1rem 0.4rem 0.4rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.5);
+  transition: all 0.3s;
 }
 
-.stepper-step.active {
-  background: rgba(94, 135, 108, 0.04);
+.step-new.active {
+  background-color: rgba(94, 135, 108, 0.12);
+  color: hsl(222.2 47.4% 11.2%);
 }
 
-.stepper-step.active .stepper-circle {
-  background: var(--white);
-  color: var(--primary-color);
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(94, 135, 108, 0.12);
-}
-
-.stepper-step.active .stepper-text {
-  color: var(--primary-color);
-  font-weight: 600;
-}
-
-.stepper-step.completed .stepper-circle {
-  background: var(--primary-color);
-  color: white;
-  border-color: var(--primary-color);
-}
-
-.stepper-step.completed .stepper-text {
-  color: var(--primary-color);
-}
-
-.stepper-circle {
-  width: 28px;
-  height: 28px;
+.step-num {
+  width: 24px;
+  height: 24px;
+  background-color: rgba(0, 0, 0, 0.06);
   border-radius: 50%;
-  border: 1.5px solid rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.75rem;
-  font-weight: 700;
-  font-family: 'DM Sans', sans-serif;
-  color: rgba(0, 0, 0, 0.35);
-  background: transparent;
-  transition: all 0.3s ease;
-  flex-shrink: 0;
+  font-weight: 600;
 }
 
-.stepper-text {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: rgba(0, 0, 0, 0.35);
-  font-family: 'DM Sans', sans-serif;
-  transition: all 0.3s ease;
-  white-space: nowrap;
+.step-new.active .step-num {
+  background-color: white;
+  color: var(--primary-dark);
 }
 
-/* ==========================================
-   BODY / CONTENT AREA
-   ========================================== */
-
-.reservation-body {
-  padding: 2.5rem 3rem 3rem;
-  min-height: 320px;
+.res-body {
+  position: relative;
 }
 
-.step-question {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 1.05rem;
+.res-question {
+  font-size: 1.25rem;
   font-weight: 500;
   color: var(--text-dark);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Step 1: Care Options */
+.care-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.care-option-pill {
   display: flex;
   align-items: center;
-}
-
-/* ==========================================
-   STEP 1: CARE OPTIONS
-   ========================================== */
-
-.care-options {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.care-option {
-  display: block;
-  width: 100%;
-  padding: 1.1rem 1.5rem;
-  border: 1.5px solid rgba(0, 0, 0, 0.08);
-  border-radius: 14px;
-  background: transparent;
-  font-family: 'DM Sans', sans-serif;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.03);
+  border: 1.5px solid transparent;
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--text-dark);
   cursor: pointer;
-  text-align: left;
-  transition: all 0.25s ease;
+  transition: all 0.2s;
+  font-family: inherit;
 }
 
-.care-option:hover {
+.care-option-pill:hover {
+  background-color: rgba(90, 126, 104, 0.06);
+}
+
+.care-option-pill.selected {
   border-color: var(--primary-color);
-  background: rgba(94, 135, 108, 0.03);
-  transform: translateX(4px);
+  background-color: rgba(90, 126, 104, 0.08);
 }
 
-.care-option.selected {
-  border-color: var(--primary-color);
-  background: rgba(94, 135, 108, 0.06);
-  color: var(--primary-color);
-  font-weight: 600;
-}
-
-/* ==========================================
-   STEP 2: CALENDAR
-   ========================================== */
-
-.step2-content {
+.care-option-icon {
+  width: 28px;
+  height: 28px;
+  background-color: white;
+  border-radius: 50%;
   display: flex;
-  flex-direction: column;
-}
-
-.calendar-wrapper {
-  display: flex;
+  align-items: center;
   justify-content: center;
-  margin-bottom: 0.5rem;
+  color: rgba(94, 135, 108, 0.95);
 }
 
-.calendar {
-  width: 320px;
-  background: var(--white);
-  border-radius: 16px;
+.call-confirm-btn {
+  background-color: #6C8D7A; /* Specific green from screenshot */
+  color: white;
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.call-confirm-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Step 2: Date & Time */
+.step2-content-new {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.calendar-new {
+  background: white;
+  border-radius: 20px;
   padding: 1.25rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
 }
 
-.calendar-header {
+.cal-header-new {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1rem;
 }
 
-.cal-month-label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
+.cal-month-new {
   font-weight: 600;
-  color: var(--text-dark);
+  font-size: 0.95rem;
+  text-transform: capitalize;
 }
 
-.cal-nav-btn {
+.cal-nav-new {
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0,0,0,0.05);
   background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: var(--text-dark);
-  transition: all 0.2s ease;
 }
 
-.cal-nav-btn:hover {
-  background: rgba(94, 135, 108, 0.06);
-  border-color: var(--primary-color);
-  color: var(--primary-color);
+.cal-nav-new:hover {
+  background: rgba(0,0,0,0.03);
 }
 
-.calendar-grid {
+.cal-grid-new {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 2px;
 }
 
-.cal-day-header {
-  font-family: 'DM Sans', sans-serif;
+.cal-day-header-new {
   font-size: 0.75rem;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.35);
+  color: var(--text-light);
   text-align: center;
   padding: 0.5rem 0;
-  text-transform: capitalize;
 }
 
-.cal-day {
-  width: 100%;
+.cal-day-new {
   aspect-ratio: 1;
-  border-radius: 10px;
-  border: none;
-  background: transparent;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--text-dark);
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
 }
 
-.cal-day:hover:not(.cal-day-disabled):not(.cal-day-outside) {
-  background: rgba(94, 135, 108, 0.08);
+.cal-day-new:hover:not(.disabled):not(.cal-day-outside) {
+  background: rgba(90, 126, 104, 0.1);
 }
 
 .cal-day-outside {
-  color: rgba(0, 0, 0, 0.15);
-  cursor: default;
+  color: rgba(0,0,0,0.2);
 }
 
-.cal-day-disabled {
-  color: rgba(0, 0, 0, 0.15);
+.cal-day-new.disabled {
+  color: rgba(0,0,0,0.2);
   cursor: not-allowed;
 }
 
 .cal-day-today {
-  background: rgba(94, 135, 108, 0.1);
-  color: var(--primary-color);
   font-weight: 700;
+  color: rgba(94, 135, 108, 0.95);
+  background: rgba(94, 135, 108, 0.05);
 }
 
-.cal-day-selected {
+.cal-day-new.selected {
   background: var(--primary-color) !important;
-  color: white !important;
-  font-weight: 700;
-  box-shadow: 0 4px 12px rgba(94, 135, 108, 0.35);
-}
-
-/* ==========================================
-   STEP 2: TIME SLOTS
-   ========================================== */
-
-.timeslots-section {
-  overflow: hidden;
-}
-
-.timeslots-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.6rem;
-}
-
-.timeslot {
-  padding: 0.8rem 0.5rem;
-  border: 1.5px solid rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
-  background: transparent;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--text-dark);
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.2s ease;
-}
-
-.timeslot:hover {
-  border-color: var(--primary-color);
-  background: rgba(94, 135, 108, 0.04);
-}
-
-.timeslot.selected {
-  background: var(--primary-color);
   color: white;
-  border-color: var(--primary-color);
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(94, 135, 108, 0.3);
 }
 
-/* ==========================================
-   BACK BUTTON
-   ========================================== */
+.timeslots-grid-new {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
 
-.back-btn {
-  display: inline-flex;
-  width: fit-content;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.6rem 1.2rem;
-  border: 1.5px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50px;
-  background: transparent;
-  font-family: 'DM Sans', sans-serif;
+.timeslot-new {
+  padding: 0.75rem 0;
+  background: white;
+  border: 1.5px solid transparent;
+  border-radius: 12px;
   font-size: 0.85rem;
   font-weight: 500;
-  color: var(--text-dark);
   cursor: pointer;
-  transition: all 0.2s ease;
-  margin-top: 1.5rem;
+  transition: all 0.2s;
 }
 
-.back-btn:hover {
-  border-color: var(--primary-color);
-  color: var(--primary-color);
-  background: rgba(94, 135, 108, 0.03);
+.timeslot-new:hover {
+  border-color: rgba(0,0,0,0.1);
 }
 
-/* ==========================================
-   STEP 3: CONFIRMATION
-   ========================================== */
+.timeslot-new.selected {
+  background: rgba(94, 135, 108, 0.95);
+  color: white;
+}
 
-.summary-card {
-  background: var(--bg-light);
-  border-radius: 16px;
+/* Step 3: Confirmation */
+.step3-wrapper {
+  max-width: 500px;
+}
+
+.summary-card-new {
+  background: white;
+  border-radius: 20px;
   padding: 1.5rem;
   margin-bottom: 2rem;
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.summary-row {
+.summary-item-new {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.6rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-.summary-row:not(:last-child) {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+.summary-item-new:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
-.summary-label {
-  font-family: 'DM Sans', sans-serif;
+.summary-label-new {
   font-size: 0.85rem;
-  font-weight: 500;
   color: var(--text-light);
 }
 
-.summary-value {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.9rem;
+.summary-value-new {
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--text-dark);
-  text-transform: capitalize;
 }
 
-/* Form */
-.confirmation-form {
+.confirmation-form-new {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
 }
 
-.form-group {
+.form-group-new {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.5rem;
 }
 
-.form-group label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.8rem;
+.form-group-new label {
+  font-size: 0.85rem;
   font-weight: 600;
-  color: var(--text-light);
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-}
-
-.form-group input {
-  padding: 0.85rem 1rem;
-  border: 1.5px solid rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.9rem;
+  gap: 0.5rem;
   color: var(--text-dark);
-  background: transparent;
-  transition: all 0.2s ease;
+}
+
+.form-group-new input {
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  background: white;
+}
+
+.form-group-new input:focus {
   outline: none;
-}
-
-.form-group input::placeholder {
-  color: rgba(0, 0, 0, 0.25);
-}
-
-.form-group input:focus {
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(94, 135, 108, 0.08);
+  box-shadow: 0 0 0 3px rgba(90, 126, 104, 0.1);
 }
 
-.form-actions {
+.form-actions-new {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 
-.confirm-btn {
+.back-btn-new {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 0.75rem 1.25rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.back-btn-new:hover {
+  background: rgba(0,0,0,0.03);
+}
+
+.confirm-btn-new {
+  background: rgba(94, 135, 108, 0.95);
+  color: white;
+  border: none;
   padding: 0.85rem 2rem;
   border-radius: 50px;
-  border: none;
-  background: var(--primary-color);
-  color: white;
-  font-family: 'DM Sans', sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(94, 135, 108, 0.3);
+  box-shadow: 0 4px 15px rgba(94, 135, 108, 0.3);
 }
 
-.confirm-btn:hover {
+.confirm-btn-new:hover {
   background: var(--primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(94, 135, 108, 0.5);
 }
 
-/* ==========================================
-   SUCCESS STATE
-   ========================================== */
-
-.success-state {
+/* Success */
+.success-state-new {
   text-align: center;
   padding: 2rem 0;
 }
 
-.success-icon {
-  width: 72px;
-  height: 72px;
+.success-icon-new {
+  width: 64px;
+  height: 64px;
+  background: var(--primary-color);
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary-color), #7ead8c);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1.5rem;
-  box-shadow: 0 8px 24px rgba(94, 135, 108, 0.35);
-  animation: successPulse 0.6s ease-out;
 }
 
-@keyframes successPulse {
-  0% {
-    transform: scale(0.6);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.success-state .step-question {
-  justify-content: center;
-  font-size: 1.3rem;
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 1rem;
-}
-
-.success-text {
-  font-family: 'DM Sans', sans-serif;
+.success-text-new {
   font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
   color: var(--text-dark);
-  line-height: 1.7;
-  max-width: 450px;
-  margin: 0 auto;
 }
 
-.success-text strong {
-  color: var(--primary-color);
-}
-
-.success-sub {
-  font-family: 'DM Sans', sans-serif;
+.success-sub-new {
   font-size: 0.85rem;
   color: var(--text-light);
-  margin-top: 0.5rem;
 }
 
-/* ==========================================
-   RESPONSIVE
-   ========================================== */
+/* Responsive */
+@media (max-width: 1024px) {
+  .reservation-box {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .res-left {
+    padding: 2rem 1.5rem 1rem;
+  }
+  
+  .res-title {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .res-overline {
+    margin-bottom: 0.75rem;
+  }
+
+  .res-desc {
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+  }
+  
+  .res-right {
+    padding: 1.5rem;
+  }
+  
+  .step2-content-new {
+    grid-template-columns: 1fr;
+  }
+}
 
 @media (max-width: 768px) {
-  .reservation-title {
-    font-size: 2rem;
+  .stepper-new {
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    gap: 1.5rem;
+    flex-wrap: nowrap;
   }
 
-  .reservation-body {
-    padding: 2rem 1.5rem 2.5rem;
+  .res-question {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
   }
 
-  .stepper-text {
-    font-size: 0.72rem;
+  .step-new {
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+    border-radius: 50%;
+    gap: 0;
   }
 
-  .stepper-step {
-    padding: 0.9rem 0.5rem;
-    gap: 0.4rem;
+  .step-new span {
+    display: none;
   }
 
-  .stepper-circle {
-    width: 24px;
-    height: 24px;
-    font-size: 0.7rem;
-  }
-
-  .timeslots-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .calendar {
+  .step-num {
     width: 100%;
-    max-width: 300px;
+    height: 100%;
+    margin: 0;
   }
 
-  .form-actions {
+  .care-options-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .care-option-pill {
+    padding: 0.85rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .care-option-icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+  
+  .form-actions-new {
     flex-direction: column-reverse;
     gap: 1rem;
   }
-
-  .form-actions .back-btn {
-    margin-top: 0;
-  }
-
-  .confirm-btn {
+  
+  .confirm-btn-new {
     width: 100%;
   }
-}
 
-@media (max-width: 480px) {
-  .reservation-body {
-    padding: 1.5rem 1.25rem 2rem;
+  .res-contact-pills {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 0.4rem;
+    margin-bottom: 2rem;
   }
 
-  .stepper-text {
-    font-size: 0.65rem;
-  }
-
-  .timeslots-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .res-contact-pill {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    gap: 0.4rem;
+    white-space: nowrap;
+    flex: 1;
+    justify-content: center;
   }
 }
