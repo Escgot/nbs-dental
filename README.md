@@ -57,7 +57,8 @@ This project was built to improve the efficiency of dental clinics by digitizing
 
 ## 📸 Screenshots
 
-(Add screenshots here of dashboard, patient list, appointments page, etc.)
+[![nbs-dental.png](https://i.postimg.cc/s2Zb3ffV/nbs-dental.png)](https://postimg.cc/XZ4s8byh)
+[![RDV.png](https://i.postimg.cc/k5FFQLfc/RDV.png)](https://postimg.cc/3yNv7fM4)
 
 ---
 
