@@ -63,16 +63,16 @@ This project was built to improve the efficiency of dental clinics by digitizing
 
 ## 🔮 Future Improvements
 
-AI-based diagnosis suggestions
-Email/SMS appointment reminders
-Multi-clinic support
-Advanced analytics dashboard
+- AI-based diagnosis suggestions
+- Email/SMS appointment reminders
+- Multi-clinic support
+- Advanced analytics dashboard
 
 ---
 
 ## 👨‍💻 Author
 
-Mohamed OuelDali
+Mohamed Oueledali
 Computer Engineering & Software Development Enthusiast
 
 ---
